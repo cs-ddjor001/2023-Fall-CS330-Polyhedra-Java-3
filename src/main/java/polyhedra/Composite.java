@@ -39,7 +39,7 @@ public class Composite
     public String getType()
     {
         // Replace the return line
-        return null;
+        return "Composite";
     }
 
     @Override
@@ -56,6 +56,9 @@ public class Composite
     public void add(Polyhedron toAdd)
     {
         // Write this function.
+        Polyhedron copy = toAdd.clone();
+        allPolyhedra.add(copy);
+        this.theBox.merge(copy.getBoundingBox());
     }
 
     /**
@@ -67,6 +70,12 @@ public class Composite
     public void scale(double scalingFactor)
     {
         // Write this function.
+        for (Polyhedron poly : this.allPolyhedra)
+        {
+            poly.scale(scalingFactor);
+        }
+
+        this.theBox.scale(scalingFactor);
     }
 
     /**
@@ -91,6 +100,10 @@ public class Composite
         Composite aCopy = new Composite();
 
         // A loop might be helpful to 'add' each entry from this.allPolyhedra
+        for (Polyhedron poly : this.allPolyhedra)
+        {
+            aCopy.add(poly);
+        }
 
         return aCopy;
     }
@@ -129,6 +142,10 @@ public class Composite
         bld.append(String.format("%d polyhedra%n", this.size()));
 
         // Maybe a loop can help...
+        for (Polyhedron poly : this.allPolyhedra)
+        {
+            bld.append("  " + poly.toString() + "\n");
+        }
 
         return bld.toString();
     }
@@ -145,7 +162,7 @@ public class Composite
     public boolean isSimple()
     {
         // Is the return corrrect?
-        return false;
+        return true;
     }
 }
 
