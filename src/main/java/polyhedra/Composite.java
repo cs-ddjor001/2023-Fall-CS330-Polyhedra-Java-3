@@ -155,14 +155,14 @@ public class Composite
     public boolean isComplex()
     {
         // Is the return corrrect?
-        return false;
+        return true;
     }
 
     @Override
     public boolean isSimple()
     {
         // Is the return corrrect?
-        return true;
+        return false;
     }
 }
 

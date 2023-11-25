@@ -157,7 +157,7 @@ public class Cylinder
     public void fromDimensions(double[] theDims)
     {
         // Something is missing...
-        this.radius = theDims[0];
-        this.height = theDims[1];
+        this.height = theDims[0];
+        this.radius = theDims[1];
     }
 }
